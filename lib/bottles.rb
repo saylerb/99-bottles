@@ -2,12 +2,17 @@ class Bottles
 
   def verse(number)
     %(#{get_bottles(number)} on the wall, #{get_bottles(number)}.
-Take #{number == 1 ? "it" : "one"} down and pass it around, #{get_bottles(number - 1)} on the wall.
+Take #{it_or_one(number)} down and pass it around, #{get_bottles(number - 1)} on the wall.
 )
   end
 
   def get_bottles(number)
-    "#{number} #{pluralize_bottle(number)} of beer"
+    case number
+    when 0
+      "#{pluralize_bottle(number)} of beer"
+    else
+      "#{number} #{pluralize_bottle(number)} of beer"
+    end
   end
 
   def pluralize_bottle(number)
@@ -19,6 +24,10 @@ Take #{number == 1 ? "it" : "one"} down and pass it around, #{get_bottles(number
     else
       "bottles"
     end
+  end
+
+  def it_or_one(number)
+    number == 1 ? "it" : "one"
   end
 
 end
