@@ -1,9 +1,14 @@
 class Bottles
 
   def verse(number)
-    %(#{get_bottles(number)} on the wall, #{get_bottles(number)}.
+    %(#{line_one(number)}
 Take #{it_or_one(number)} down and pass it around, #{get_bottles(number - 1)} on the wall.
 )
+  end
+
+  def line_one(number)
+    get_bottles(number) +
+      " on the wall, #{get_bottles(number)}."
   end
 
   def get_bottles(number)
