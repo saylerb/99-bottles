@@ -44,4 +44,8 @@ class Bottles
     number == 1 ? "it" : "one"
   end
 
+  def verses(first, second)
+    verse(first) + "\n" + verse(second)
+  end
+
 end
