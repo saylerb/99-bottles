@@ -1,7 +1,9 @@
+require 'pry'
+
 class Bottles
 
   def verse(number)
-    %(#{line_one(number).capitalize}
+%(#{line_one(number).capitalize}
 #{line_two(number)}
 )
   end
@@ -44,8 +46,20 @@ class Bottles
     number == 1 ? "it" : "one"
   end
 
-  def verses(first, second)
-    verse(first) + "\n" + verse(second)
+  def verses(start, finish)
+    result = ""
+    numbers = (finish..start).to_a.reverse
+    last = numbers[-1]
+
+    numbers.each do |num|
+      result << verse(num)
+      result << "\n" if num != last
+    end
+    result
+  end
+
+  def song
+    verses(99, 0)
   end
 
 end
